@@ -328,18 +328,18 @@ hr {
 }
 .story{
     flex-basis: 18%;
-    padding-top: 40%;
-    position: relative;
+    
+   
     background-position: center;
     background-size: cover;
-    border-radius: 10px;
+   
 }
 .story img{
     position: absolute;
-    width: 35px;
+    width: 30px;
     border-radius: 50%;
-    top: 5px;
-    left: 5px;
+    top: 1%;
+    left: 2%;
     border: 3px solid #1876f2;
 }
 .story p{
@@ -703,22 +703,13 @@ hr {
   }
  
  
-  @media screen and (max-width: 600px) {
-    .inner-story1{
-        max-width:600px;
-        position:fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-       
-    }
-  }
+  
   
  
   @media screen and (max-width: 600px) {
     .inner-story1 img{
-        max-width:300px;
-        min-width:100px;
+        max-width:280px;
+       
         position:fixed;
         top: 50%;
         left: 50%;
@@ -734,7 +725,7 @@ hr {
 
   @media screen and (min-width: 601px) {
     .inner-story1 img{
-        max-width:350px;
+        max-width:290px;
         
         position:fixed;
         top: 50%;
@@ -750,15 +741,22 @@ hr {
     
 
   }
-
+ 
   .right-arrow{
      position:fixed;
      top:50%;
      right:25%;
      color:#fff; 
   }
+  .left-arrow{
+    position:fixed;
+    top:50%;
+    left:25%;
+    color:#fff; 
+ }
 
-  @media screen and (max-width: 600px) {
+
+  @media screen and (max-width: 700px) {
     .right-arrow{
         
         position: fixed;
@@ -767,52 +765,128 @@ hr {
        
        
     }
+    .left-arrow{
+        
+        position: fixed;
+        top: 50%;
+       left:2%;
+       
+       
+    }
   }
 
-  .left-arrow{
-    position:fixed;
-    top:50%;
-    left:25%;
-    color:#fff; 
- }
+  
 
-.visually-hidden{
-    display: none;
-}
+
  
-.carousel-control-next, .carousel-control-prev {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 2%;
-    color: #fff;
-    text-align: center;
-    opacity: .5;
-    transition: opacity .15s ease;
-}
-.carousel-indicators {
 
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 15;
-    display: -ms-flexbox;
-    display: none;
-    -ms-flex-pack: center;
+.button {
+    font-size: 50px;
+    color: #eee;
+    margin: 5px;
+  }
+  .card-icon-open {
+    display: block;
+    position: relative;
+    left: 45%;
+    top: 35px;
+    font-size: 30px;
+    width: 50px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transform: translate(0%, -400%);
+    transition: all 0.25s ease-in-out;
+  }
+  .card-icon-open:focus,
+  .card-icon-open:hover {
+    color: #111;
+  }
+  .close-modal {
+    position: fixed;
+    top: 0;
+    right: 5px;
+  }
+  .fullscreen {
+    position: relative;
+    text-decoration: none;
+    font-size: 25px;
+    color: #eee;
+    z-index: 999;
+  }
+  .fullscreen:hover,
+  .fullscreen:focus,
+  .fullscreen:blur {
+    text-decoration: none;
+    color: red;
+  }
+  .gallery-container {
+    padding-top: 10px;
+  }
+  .gallery-card {
+    position: relative;
+    
+   
+  }
+  .card ,.gallery-thumbnail {
+    max-width: 100%;
+    border-radius: 10px;
+    
+  }
+  .gallery-thumbnail:focus ~ .card-icon-open,
+  .gallery-thumbnail:hover ~ .card-icon-open,
+  .gallery-thumbnail ~ .card-icon-open:focus,
+  .gallery-thumbnail ~ .card-icon-open:hover {
+    opacity: 1;
+  }
+  .image-container {
+    display: flex;
     justify-content: center;
-    padding-left: 0;
-    margin-right: 15%;
-    margin-left: 15%;
-    list-style: none;
-}
-.dropdown-toggle{
-    display:block;
+    align-items: center;
+  }
+  .image-rotate {
+    font-size: 44px;
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(21, 21, 21, 0.75);
+  }
+  .modal-body {
+    position: relative;
+    top: 15%;
+    z-index: 11;
+    padding: 0;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .modal-close {
+    font-size: 44px;
+    z-index: 99;
+    color: #eee;
+    transition: all 0.25s ease-in-out;
+  }
+  .modal-close:focus,
+  .modal-close:hover {
+    color: red;
+  }
+  .rotate-container {
+    font-size: 44px;
+    position: fixed;
+    top: 0;
+    left: 5px;
+  }
+
+
+
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0px;
+    pointer-events: none;
 }

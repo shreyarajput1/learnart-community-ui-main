@@ -6,7 +6,7 @@ import Profile from "../screens/profile/Profile";
 //
 function FeedLayout(props) {
   return(
-    <div className="FeedLayout " >  
+    <div className="FeedLayout">  
       <Header />
       <div className="container-fluid">
         <div className="row ">

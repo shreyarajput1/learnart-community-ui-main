@@ -1,7 +1,7 @@
 import FeedLayout from "../../layouts/FeedLayout";
 import React,{useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+
+
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 import {stockData}from "../../components/data";
@@ -19,17 +19,103 @@ import LikeButton from"../../components/LikeButton";
 import DropDown from "../../components/DropDown";
 import Comments from "../../components/Comments";
 import Share from "../../components/Share";
-//
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Story from "../../components/storycard";
+
+import Storymodal from "../../components/StoryModal";
+
+const imgUrls = [
+ { src:"https://nidhi15151.github.io/social_media_website_design//images/status-1.png",
+    name:"",
+    u_img: "https://nidhi15151.github.io/social_media_website_design/images/profile-pic.png",    
+         
+  },
+ { src:"https://nidhi15151.github.io/social_media_website_design/images/status-2.png",
+  name:"Amisha Naidu",
+  u_img:"https://nidhi15151.github.io/social_media_website_design/images/member-1.png",
+    
+},
+  {src:"https://nidhi15151.github.io/social_media_website_design/images/status-3.png",
+  name:"Piyush",
+  u_img:"https://nidhi15151.github.io/social_media_website_design/images/member-2.png",
+    
+},
+  {src:"https://nidhi15151.github.io/social_media_website_design/images/status-4.png",
+  name:"Twinkle",
+  u_img:"https://nidhi15151.github.io/social_media_website_design/images/member-3.png",
+    
+},
+  {src:"https://nidhi15151.github.io/social_media_website_design/images/status-5.png",
+    name:"Jack",
+    u_img:"https://nidhi15151.github.io/social_media_website_design/images/member-4.png",
+    
+  }
+];
 class Feed extends React.Component { 
   constructor(props) {
     super(props);
     this.state = {
-      
-    }
-  } 
+      imgIndex: 0,
+      imgUrlLength: imgUrls.length,
+      showModal: false,
+      rotation: 0
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.nextClick = this.nextClick.bind(this);
+    this.prevClick = this.prevClick.bind(this);
+    this.rotateImage = this.rotateImage.bind(this);
+  }
+
+  openModal(index) {
+    this.setState({
+      showModal: true,
+      imgIndex: index
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      showModal: false,
+      imgIndex: 0,
+      rotation: 0
+    });
+  }
+
+  nextClick() {
+    this.setState(prevState => {
+      return {
+        imgIndex:
+          prevState.imgIndex === prevState.imgUrlLength - 1
+            ? 0
+            : prevState.imgIndex + 1
+      };
+    });
+  }
+
+  prevClick() {
+    this.setState(prevState => {
+      return {
+        imgIndex:
+          prevState.imgIndex === 0
+            ? prevState.imgUrlLength - 1
+            : prevState.imgIndex - 1
+      };
+    });
+  }
+
+  rotateImage() {
+    this.setState(prevState => {
+      return {
+        rotation: prevState.rotation + 90 <= 270 ? prevState.rotation + 90 : 0
+      };
+    });
+  }
 
   render() {
-  
+    
      
   return(
    
@@ -38,25 +124,28 @@ class Feed extends React.Component {
       
       <FeedLayout>
     <div class="main-content"style={{marginTop:'4rem'}}>
-          
-      <div class="story-gallery">
-    
        
-        <div class="story story1" style={{backgroundImage:"url(https://nidhi15151.github.io/social_media_website_design//images/status-1.png)"}}>
-            <img src="https://nidhi15151.github.io/social_media_website_design/images/upload.png"/>
-            
-
-        </div>
-        {stockData.map((data) => {
-           if(data.id>="2") 
-            return (
-            <Link class={data.class}to={data.Storylink} style={{backgroundImage:data.storyurl}}>
-                <img src={data.u_img}/>
-            </Link>
-
-            )})}
-        </div>
-            
+    <div class="story-gallery">
+   
+    
+    
+     <Story imgUrls={imgUrls} 
+     show={this.state.showModal} 
+     openModal={this.openModal}
+      closeModal={this.closeModal}
+     
+         
+          onNext={this.nextClick}
+          onPrev={this.prevClick}
+          rotateImage={this.rotateImage}
+          rotation={this.state.rotation}
+          src2={imgUrls[this.state.imgIndex].u_img}
+          src={imgUrls[this.state.imgIndex].src}
+          name={imgUrls[this.state.imgIndex].name}/>
+   
+     
+    </div>
+           
         <div class="write-post-container">
       
             <Link class="user-profile" to="/profile"style={{textDecoration:"none"}}>
