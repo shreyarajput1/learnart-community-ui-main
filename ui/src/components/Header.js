@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link ,Redirect} from "react-router-dom";
 import React from 'react';
+
+
 
 class Header extends React.Component{
         state = {
-        isOpen: false
+        isOpen: false,
+        islogout: false
       };
     
     
       toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
-    
+      signOut = () => {
+        localStorage.removeItem("token");
+        this.setState({
+          islogout: true
+        });
+      };
       render() {
         const menuClass =`dropdown-menu${this.state.isOpen ? " show" : ""} `;
-  return(
+        if (this.state.islogout) {
+            return <Redirect to="/" />;
+          }
+        return(
     
     <nav class="navbar fixed-top">
        
@@ -81,7 +92,7 @@ class Header extends React.Component{
 
                 <div class="settings-links">
                     <img src="https://nidhi15151.github.io/social_media_website_design/images/logout.png" class="settings-icon"/>
-                    <Link to="/">Logout <img src="https://nidhi15151.github.io/social_media_website_design/images/arrow.png" style={{width:"10px",marginLeft:"50px"}}/></Link>
+                    <a  href="" onClick={this.signOut}>Logout <img src="https://nidhi15151.github.io/social_media_website_design/images/arrow.png" style={{width:"10px",marginLeft:"50px"}}/></a>
                 </div>
 
             </div>

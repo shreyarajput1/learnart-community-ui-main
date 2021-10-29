@@ -1,6 +1,7 @@
 export const stockData = [
     {
       id:"1",
+      user_id:"nick",
       name:"John Nichol",
       caption:"Watch more on website development and UI designs.",
       profileurl:"https://nidhi15151.github.io/social_media_website_design/images/profile-pic.png",

@@ -5,25 +5,15 @@ import React,{useState} from 'react';
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 import {stockData}from "../../components/data";
-import Dropdown from 'react-bootstrap/Dropdown';
-import {IoEllipsisHorizontal}from 'react-icons/io5';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import { useEffect,useRef } from 'react';
-import { BsHeart } from "react-icons/bs";
-import { BsHeartFill} from "react-icons/bs";
-import { MdBookmarkBorder} from "react-icons/md";
-import { FaCommentSlash,FaShare, FaRegComments} from "react-icons/fa";
-import {FcShare } from "react-icons/fc";
 import LikeButton from"../../components/LikeButton";
 import DropDown from "../../components/DropDown";
 import Comments from "../../components/Comments";
 import Share from "../../components/Share";
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Story from "../../components/storycard";
 
-import Storymodal from "../../components/StoryModal";
+
 
 const imgUrls = [
  { src:"https://nidhi15151.github.io/social_media_website_design//images/status-1.png",
@@ -152,7 +142,7 @@ class Feed extends React.Component {
                     
                     <img src="https://nidhi15151.github.io/social_media_website_design/images/profile-pic.png"/>
                     <div>
-                        <p>{(localStorage.getItem('Name'))}</p>
+                        <p>{(localStorage.getItem('token'))}</p>
                        <small>  Public  <i class="fas fa-caret-down" aria-hidden="true"></i></small>
                     </div>
                    
@@ -183,8 +173,8 @@ class Feed extends React.Component {
                     
                 <img src={data.profileurl}/>
                     <div>
-                        <p>{(localStorage.getItem('Name'))}</p>
-                        <span>June 24 2021, 13:40 pm </span>
+                        <p>{(localStorage.getItem('token'))}</p>
+                        <span>June 24 2021</span>
                     </div>
                 </div>
                 
